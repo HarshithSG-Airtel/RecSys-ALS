@@ -1,0 +1,256 @@
+/home/B0336827/.local/lib/python3.11/site-packages/pandas/core/computation/expressions.py:22: UserWarning: Pandas requires version '2.10.2' or newer of 'numexpr' (version '2.10.0' currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/home/B0336827/.local/lib/python3.11/site-packages/pandas/core/arrays/masked.py:56: UserWarning: Pandas requires version '1.4.2' or newer of 'bottleneck' (version '1.3.8' currently installed).
+  from pandas.core import (
+INFO:__main__:Connected to MLflow. Experiment ID: 31
+INFO:__main__:Starting Data Preparation...
+Path not found or inaccessible, skipping: gs://wynk-ml-workspace/projects/rails_reranking/daily_user_watch_history_new/day=2026-02-06
+Path not found or inaccessible, skipping: gs://wynk-ml-workspace/projects/rails_reranking/daily_user_watch_history_new/day=2026-02-05
+Data read from gs://wynk-ml-workspace/projects/rails_reranking/daily_user_watch_history_new completed, filtering for common users...
+self train and test df have been assigned
+Playtime combined successfully.
+Playtime combined successfully.
+Playtime to label completed.
+Path not found or inaccessible, skipping: gs://wynk-ml-workspace/projects/rails_reranking/daily_user_click_watch_history_new/day=2026-02-06
+Path not found or inaccessible, skipping: gs://wynk-ml-workspace/projects/rails_reranking/daily_user_click_watch_history_new/day=2026-02-05
+Data read from gs://wynk-ml-workspace/projects/rails_reranking/daily_user_click_watch_history_new completed, filtering for common users...
+Successfully combined training and testing features!
+Filtering users, aggregating playtime, and building indexes...
+Applied time decay to confidence scores.
+Calculating item frequencies and applying popularity penalty...
+Popularity penalty successfully applied to confidence scores.
+Generating Ground Truth...
+Saving data checkpoint to: default_checkpoint...
+  Saving indexed_test...
+  Saving indexed_train...
+  Saving ground_data...
+  Saving item_lookup...
+  Saving user_lookup...
+  Saving combined_train_df...
+  Saving combined_test_df...
+  Saving metadata_df...
+Checkpoint successfully saved!
+INFO:__main__:Loading Fresh Data Checkpoint...
+Loading data checkpoint from: gs://wynk-ml-workspace/_temp/harshith/als/default_checkpoint...
+Checkpoint loaded successfully! Ready for training or inference.
+INFO:__main__:Total hyperparameter combinations to test: 10
+Submitting 10 jobs, running 4 at a time...
+
+[STARTING] Run 53e366 | Params: {'rank': 100, 'maxIter': 10, 'alpha': 2.0, 'regParam': 1.0}
+
+[STARTING] Run dd0e14 | Params: {'rank': 100, 'maxIter': 10, 'alpha': 10.0, 'regParam': 1.0}
+
+[STARTING] Run 6a5bc3 | Params: {'rank': 100, 'maxIter': 10, 'alpha': 3.0, 'regParam': 1.0}
+
+[STARTING] Run 25d081 | Params: {'rank': 100, 'maxIter': 10, 'alpha': 5.0, 'regParam': 1.0}
+Training ALS Model...
+Training ALS Model...
+Training ALS Model...
+Training ALS Model...
+Generating 50 raw recommendations for all users...
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+/usr/lib/spark/python/lib/pyspark.zip/pyspark/sql/context.py:158: FutureWarning: Deprecated in 3.0.0. Use SparkSession.builder.getOrCreate() instead.
+Catalog Coverage (@50): 0.1960  (6754 / 34455 items recommended)
+
+[Ranking Performance]
+Catalog Coverage (@50): 0.2435  (8391 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0478
+Recall@15:    0.1360
+MAP:             0.0571
+==================================================
+
+[SUCCESS] Run dd0e14 | Coverage: 0.1960 | MAP: 0.0571
+2026/04/27 11:54:07 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_10.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/1bd4e15a985247e786acfab0fcdd0e14.
+2026/04/27 11:54:07 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run c9de8e | Params: {'rank': 100, 'maxIter': 10, 'alpha': 20.0, 'regParam': 1.0}
+Training ALS Model...
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0454
+Recall@15:    0.1280
+MAP:             0.0515
+==================================================
+
+[SUCCESS] Run 25d081 | Coverage: 0.2435 | MAP: 0.0515
+2026/04/27 11:54:13 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_5.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/3838ecbea84446d0956024a01825d081.
+2026/04/27 11:54:13 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run 6a590e | Params: {'rank': 100, 'maxIter': 15, 'alpha': 2.0, 'regParam': 1.0}
+Training ALS Model...
+Catalog Coverage (@50): 0.1052  (3625 / 34455 items recommended)
+
+[Ranking Performance]
+Catalog Coverage (@50): 0.1826  (6291 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0290
+Recall@15:    0.0735
+MAP:             0.0204
+==================================================
+
+[SUCCESS] Run 53e366 | Coverage: 0.1052 | MAP: 0.0204
+2026/04/27 11:55:13 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_2.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/0d720f8a81ce43ff947e498d0653e366.
+2026/04/27 11:55:13 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run 7626f1 | Params: {'rank': 100, 'maxIter': 15, 'alpha': 3.0, 'regParam': 1.0}
+Training ALS Model...
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0400
+Recall@15:    0.1107
+MAP:             0.0378
+==================================================
+
+[SUCCESS] Run 6a5bc3 | Coverage: 0.1826 | MAP: 0.0378
+2026/04/27 11:55:14 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_3.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/3b8795b37a474e6797b933cbff6a5bc3.
+2026/04/27 11:55:14 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run d72515 | Params: {'rank': 100, 'maxIter': 15, 'alpha': 5.0, 'regParam': 1.0}
+Training ALS Model...
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Catalog Coverage (@50): 0.1711  (5894 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0471
+Recall@15:    0.1339
+MAP:             0.0535
+==================================================
+
+[SUCCESS] Run c9de8e | Coverage: 0.1711 | MAP: 0.0535
+2026/04/27 12:15:40 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_20.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/d28cf3f6afc14bbfb4dca02f10c9de8e.
+2026/04/27 12:15:40 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run c12801 | Params: {'rank': 100, 'maxIter': 15, 'alpha': 10.0, 'regParam': 1.0}
+Training ALS Model...
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Catalog Coverage (@50): 0.1157  (3988 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0318
+Recall@15:    0.0813
+MAP:             0.0226
+==================================================
+
+[SUCCESS] Run 6a590e | Coverage: 0.1157 | MAP: 0.0226
+2026/04/27 12:24:49 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_2.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/6f298131c1b8469aa4fffef60a6a590e.
+2026/04/27 12:24:49 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+
+[STARTING] Run 5a3d36 | Params: {'rank': 100, 'maxIter': 15, 'alpha': 20.0, 'regParam': 1.0}
+Training ALS Model...
+Catalog Coverage (@50): 0.1972  (6793 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0422
+Recall@15:    0.1184
+MAP:             0.0429
+==================================================
+
+[SUCCESS] Run 7626f1 | Coverage: 0.1972 | MAP: 0.0429
+2026/04/27 12:25:32 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_3.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/4d76b66eee714249b1446c511b7626f1.
+2026/04/27 12:25:32 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+Catalog Coverage (@50): 0.2285  (7873 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0460
+Recall@15:    0.1301
+MAP:             0.0536
+==================================================
+
+[SUCCESS] Run d72515 | Coverage: 0.2285 | MAP: 0.0536
+2026/04/27 12:26:11 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_5.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/23022291020a438bad8ac5efd6d72515.
+2026/04/27 12:26:11 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Catalog Coverage (@50): 0.1849  (6371 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0479
+Recall@15:    0.1363
+MAP:             0.0572
+==================================================
+
+[SUCCESS] Run c12801 | Coverage: 0.1849 | MAP: 0.0572
+2026/04/27 12:42:31 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_10.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/14e1b1ef9d5d4a48818512a3fdc12801.
+2026/04/27 12:42:31 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+Generating 50 raw recommendations for all users...
+Filtering raw recommendations down to 15 novel items per user...
+
+==================================================
+EVALUATING MODEL METRICS
+==================================================
+Catalog Coverage (@50): 0.1690  (5824 / 34455 items recommended)
+
+[Ranking Performance]
+Users Evaluated (Train/Test intersection): 2452290
+Precision@15: 0.0470
+Recall@15:    0.1336
+MAP:             0.0531
+==================================================
+
+[SUCCESS] Run 5a3d36 | Coverage: 0.1690 | MAP: 0.0531
+2026/04/27 12:49:29 INFO mlflow.tracking._tracking_service.client: 🏃 View run Rank_100_Alpha_20.0 at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/dbc6bdf5c1934b4382186b826d5a3d36.
+2026/04/27 12:49:29 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+INFO:py4j.clientserver:Closing down clientserver connection
+INFO:py4j.clientserver:Closing down clientserver connection
+INFO:py4j.clientserver:Closing down clientserver connection
+INFO:py4j.clientserver:Closing down clientserver connection
+2026/04/27 12:49:29 INFO mlflow.tracking._tracking_service.client: 🏃 View run Parallel_Grid_Search_Run at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31/runs/f797ff96e8d5426e84017eddbea589e1.
+2026/04/27 12:49:29 INFO mlflow.tracking._tracking_service.client: 🧪 View experiment at: http://gcp-prd-ds-mlflow.prd.wynk.internal/#/experiments/31.
+INFO:__main__:Parallel grid search complete.
+INFO:py4j.clientserver:Closing down clientserver connection
